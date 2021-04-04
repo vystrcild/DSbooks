@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from search import SearchForm, get_books_by_search
+from import_data import books
 
 app = Flask(__name__)
 
@@ -15,9 +16,10 @@ def search_result():
     results = get_books_by_search(form.search.data)
     return render_template("result.html", form=form, results=results)
 
-@app.route('/detail', methods=["GET","POST"])
-def get_detail():
-    return render_template("detail.html")
+@app.route('/detail/<isbn>', methods=["GET","POST"])
+def get_detail(isbn):
+    book = books[books["ISBN"]==isbn]
+    return render_template("detail.html", book=book)
 
 if __name__ == '__main__':
     app.run(debug=True)
