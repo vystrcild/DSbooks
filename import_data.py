@@ -16,5 +16,5 @@ df["Rating-Count"] = df.groupby(['ISBN'])["Book-Rating"].transform(np.sum)
 df["Rating-Average"] = df.groupby(['ISBN'])["Book-Rating"].transform(np.mean)
 
 # Create final DF for books & drop duplicates
-books = df[["Book-Title", "ISBN", "Rating-Count", "Rating-Average"]]
+books = df[["Book-Title", "ISBN", "Rating-Count", "Rating-Average", "Image-URL-S"]]
 books.drop_duplicates(inplace=True)

@@ -1,10 +1,18 @@
 {% extends 'index.html' %}
 
 {% block result %}
-    {% for result in results %}
-    <li>{{ result }}</li>
-    {% endfor %}
+    <div class="flex flex-col items-start mt-8 ml-96">
+        {% for i in range(5) %}
 
-    {{ results }}
-
+        <div class="flex flex-row p-4 hover:shadow-xl">
+            <img class="object-none w-16 pr-4" src="{{ results.iloc[i]["Image-URL-S"] }}">
+            <div class="flex flex-col">
+                <p class="text-white pr-16">{{ results.iloc[i]["Book-Title"] }}</p>
+                <p class="text-white text-xs">ISBN: {{ results.iloc[i]["ISBN"] }}</p>
+                <p class="text-white text-xs">Ratings: {{ results.iloc[i]["Rating-Count"]|round|int }}</p>
+                <p class="text-white text-xs">Average Ratings: {{ "%.1f"|format(results.iloc[i]["Rating-Average"]|float) }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -15,5 +15,9 @@ def search_result():
     results = get_books_by_search(form.search.data)
     return render_template("result.html", form=form, results=results)
 
+@app.route('/detail', methods=["GET","POST"])
+def get_detail():
+    return render_template("detail.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
