@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block result %}
+    {% for result in results %}
+    <li>{{ result }}</li>
+    {% endfor %}
+
+    {{ results }}
+
+{% endblock %}

@@ -1,4 +1,10 @@
 from import_data import books
+from wtforms import Form, StringField, SubmitField
+from wtforms.validators import DataRequired
+
+class SearchForm(Form):
+    search = StringField("", validators=[DataRequired()])
+    submit = SubmitField("Search")
 
 def get_books_by_search(search):
     results = books
