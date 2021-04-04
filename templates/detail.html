@@ -1,13 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    OJOJOJ
-    <br>
-    {{ book }}
-</head>
-<body>
+{% extends 'index.html' %}
 
-</body>
-</html>
+{% block result %}
+
+
+    <div class="flex flex-col p-4 items-center">
+        <div class="flex flex-row p-4">
+            <img class="object-none pr-4" src="{{ book.iloc[0]["Image-URL-L"] }}">
+            <div class="w-96">
+                <p class="text-white text-xl">{{ book.iloc[0]["Book-Title"] }}</p>
+                <p class="text-white text-sm">by: {{ book.iloc[0]["Book-Author"] }}</p>
+                <p class="text-white text-sm">ISBN: {{ book.iloc[0]["ISBN"] }}</p>
+                <p class="text-white text-sm">Ratings: {{ book.iloc[0]["Rating-Count"] }}</p>
+                <p class="text-white text-sm">Average Rating: {{ book.iloc[0]["Rating-Average"] }}</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="flex flex-col col-2 items-start mt-8 mb-8 ml-96">
+        <div class="text-white text-xl">Recommended books:</div>
+        {% for i in range(results_len) %}
+
+        <div class="flex flex-row p-4 hover:shadow-xl">
+            <img class="object-none w-16 pr-4" src="{{ recs.iloc[i]["Image-URL-S"] }}">
+            <div class="flex flex-col">
+                <a href="/detail/{{ recs.iloc[i]["ISBN"] }}" class="text-white pr-16">{{ recs.iloc[i]["Book-Title"] }}</a>
+                <p class="text-white text-xs">ISBN: {{ recs.iloc[i]["ISBN"] }}</p>
+                <p class="text-white text-xs">Ratings: {{ recs.iloc[i]["Rating-Count"]|round|int }}</p>
+                <p class="text-white text-xs">Average Ratings: {{ "%.1f"|format(recs.iloc[i]["Rating-Average"]|float) }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
