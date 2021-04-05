@@ -9,6 +9,7 @@
             <img class="object-none w-16 pr-4" src="{{ results.iloc[i]["Image-URL-S"] }}">
             <div class="flex flex-col">
                 <a href="/detail/{{ results.iloc[i]["ISBN"] }}" class="text-white pr-16">{{ results.iloc[i]["Book-Title"] }}</a>
+                <p class="text-white text-xs">by: {{ results.iloc[i]["Book-Author"] }}</p>
                 <p class="text-white text-xs">ISBN: {{ results.iloc[i]["ISBN"] }}</p>
                 <p class="text-white text-xs">Ratings: {{ results.iloc[i]["Rating-Count"]|round|int }}</p>
                 <p class="text-white text-xs">Average Ratings: {{ "%.1f"|format(results.iloc[i]["Rating-Average"]|float) }}</p>
