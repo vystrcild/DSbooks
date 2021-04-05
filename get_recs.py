@@ -1,8 +1,6 @@
 from import_data import ratings, books
 import pandas as pd
 
-isbn_input = "043935806X"
-
 
 def get_readers(isbn):
     """
@@ -76,5 +74,5 @@ def get_books_by_correlations(isbn):
     """
     corr_df = get_correlations(isbn)
     books_by_corrs = pd.merge(corr_df, books, on=["ISBN"])
-    books_ordered = books_by_corrs.sort_values(by="corr", ascending=False)[0:10]
+    books_ordered = books_by_corrs.sort_values(by="corr", ascending=False)[:10]
     return books_ordered
