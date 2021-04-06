@@ -68,9 +68,9 @@ def get_correlations(isbn):
 
 def get_books_by_correlations(isbn):
     """
-    Get books by...
-    :param isbn:
-    :return:
+    Get final dataframe of books with highest correlation
+    :param isbn: string
+    :return: DataFrame
     """
     corr_df = get_correlations(isbn)
     books_by_corrs = pd.merge(corr_df, books, on=["ISBN"])
