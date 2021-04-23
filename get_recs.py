@@ -15,7 +15,7 @@ def get_readers(isbn):
 
 def get_ratings_by_readers(isbn):
     """
-    Get all book ratings by specific User-IDs
+    Get all book ratings by specific User-IDs .
     :param isbn: string
     :return: DataFrame
     """
